@@ -61,7 +61,7 @@ hist_data <- act_tbl %>% group_by(date) %>% summarise(steps = sum(steps))
 hist(hist_data$steps, main = "Distribution af steps pr date", xlab = "Number of steps", breaks = 30)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 Task:
 3. Calculate and report the mean and median of the total number of steps taken per day  
 
@@ -100,7 +100,7 @@ int_steps <- act_tbl %>%
 plot(int_steps, type = "l", main = "Average number of steps pr interval", xlab = "5-min interval", ylab = "Average number of steps" )
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 Task 
 5. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -161,7 +161,7 @@ hist_data_2 <- new_data %>% group_by(date) %>% summarise(steps = sum(steps))
 hist(hist_data_2$steps, main = "Distribution af steps pr date - without missing values", xlab = "Number of steps", breaks = 30)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
 
 There is a clear difference in the distribution now, with the spike more obvious.
 
@@ -229,4 +229,4 @@ xyplot(steps ~ interval | wkd, data = int_steps_2, main="Average Steps
        per Day", xlab = "Interval", ylab = "Steps", layout=c(1,2), type="l")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
