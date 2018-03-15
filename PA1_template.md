@@ -14,6 +14,10 @@ library(dplyr)
 ```
 
 ```
+## Warning: package 'dplyr' was built under R version 3.4.2
+```
+
+```
 ## 
 ## Attaching package: 'dplyr'
 ```
@@ -33,6 +37,14 @@ library(dplyr)
 ```r
 act_tbl <- read.csv("activity.csv", stringsAsFactors = FALSE, header = TRUE)
 act_tbl$date <- as.Date(act_tbl$date)
+```
+
+```
+## Warning in strptime(xx, f <- "%Y-%m-%d", tz = "GMT"): unknown timezone
+## 'zone/tz/2018c.1.0/zoneinfo/Europe/Copenhagen'
+```
+
+```r
 act_tbl$teps <- as.numeric(act_tbl$steps)
 ```
 
@@ -100,10 +112,10 @@ print(max_int)
 ```
 
 ```
-## # A tibble: 1 × 2
+## # A tibble: 1 x 2
 ##   interval avg_steps
 ##      <int>     <dbl>
-## 1      835  206.1698
+## 1      835      206.
 ```
 
 The calculation shows that the interval with maximum number of steps is 835, where the average number of steps is 206
@@ -195,7 +207,7 @@ Then use an ifelse staemant to check whether a given day is part of that vector,
 
 
 ```r
-new_data$wkd <- as.factor(ifelse(new_data$date %in% weekdays, 'weekday', 'weekend'))
+new_data$wkd <- as.factor(ifelse(weekdays(new_data$date) %in% weekdays, 'weekday', 'weekend'))
 ```
 
 11. Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
@@ -213,7 +225,7 @@ The the plot
 ```r
 library(lattice)
 
-xyplot(int_steps_2$steps ~ int_steps_2$interval|int_steps_2$wkd, main="Average Steps 
+xyplot(steps ~ interval | wkd, data = int_steps_2, main="Average Steps 
        per Day", xlab = "Interval", ylab = "Steps", layout=c(1,2), type="l")
 ```
 
